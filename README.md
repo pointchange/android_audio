@@ -2,6 +2,10 @@
 
 一款基于 jetpack compose 、借助 vlc player 插件开发的几乎适配全格式音频的音乐软件
 
+## 下载安装
+
+[audio 1.0.0](https://github.com/pointchange/android_audio/releases/tag/v1.0.0)
+
 ## 功能特性
 
 - **基本功能**: 音频播放与搜索、音频列表、扫描文件、定时器、自选主题
