@@ -4,7 +4,7 @@
 
 ## 下载安装
 
-[audio 1.0.0](https://github.com/pointchange/android_audio/releases/tag/v1.0.0)
+[audio 1.0.0](https://github.com/pointchange/android_audio/releases/download/v1.0.0/audio_1.0.0.apk)
 
 ## 功能特性
 
