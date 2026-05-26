@@ -1,0 +1,178 @@
+<resources>
+    <string name="app_name">音乐</string>
+    <string name="search_music">搜索音乐</string>
+    <!--    operation-->
+    <string name="more">更多</string>
+    <string name="drawer_sheet">抽屉式导航栏</string>
+    <string name="back">Back</string>
+    <string name="search_song_album_artist">歌曲 / 歌手 / 专辑</string>
+    <string name="clear_input_value">清除</string>
+    <string name="search">搜索</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="playing_music_list">正在播放列表</string>
+    <string name="tone_control">调音</string>
+    <!--    mode-->
+    <string name="random">随机</string>
+    <string name="loop">顺序</string>
+    <string name="repeat_one">重复</string>
+
+    <string name="drag">拖拽</string>
+
+
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="close">关闭</string>
+
+    <string name="enable">Enable</string>
+    <string name="read_media_audio">访问音频权限</string>
+    <string name="go_settings">去设置</string>
+    <string name="reauthorization">重新授权</string>
+
+    <!--    permission-->
+    <string name="request_permission">需权限</string>
+    <string name="request_read_media_audio_permission">需要访问音频权限</string>
+    <string name="request_read_media_audio_permission_content">您还没有启用请求读取媒体音频权限。一旦启用，您就可以扫描文件</string>
+    <string name="go_settings_content">上次权限处于拒绝状态时。现在，当设置启用权限时，它是：</string>
+
+    <string name="contentResolver_query_fail">查询系统音频库失败</string>
+    <string name="contentResolver_audio_not_exist">音频不存在</string>
+
+    <string name="all_file">需访问所有文件权限</string>
+    <string name="internet">需网络权限</string>
+
+    <!--home search bar more-->
+    <string name="settings">设置</string>
+    <string name="scan">扫描</string>
+
+    <!--  home search bar more Sort  -->
+    <string name="sort">排序</string>
+    <string name="title">歌名</string>
+    <string name="artist">歌手</string>
+    <string name="default_sort">默认排序</string>
+
+
+    <string name="scan_local">扫描本地音频</string>
+
+    <!--    list-->
+    <string name="list">列表</string>
+    <string name="default_list">默认列表</string>
+    <string name="favorite">最喜欢</string>
+
+    <!--Play the next one audio list item-->
+    <string name="play_the_next_one">下一首播放</string>
+    <string name="add_favor">添加到喜欢列表</string>
+
+    <!--    unknow-->
+    <string name="unknow_title">未知歌名</string>
+    <string name="unknow_artist">未知歌手</string>
+    <string name="unknow_album">未知专辑</string>
+
+    <!--    list queue-->
+    <string name="default_list_queue">默认队列</string>
+    <string name="favorite_queue">喜欢队列</string>
+    <string name="search_queue">搜索队列</string>
+
+    <string name="song_count">歌曲</string>
+
+    <!--    list options-->
+    <string name="clear_play_list">清除列表</string>
+    <string name="clear_dialog_content">您要清除列表吗？</string>
+    <string name="clear">清除</string>
+    <string name="clear_an_item">清除一首</string>
+    <string name="select_all">全选</string>
+    <string name="deselect_all">删除全部</string>
+    <string name="list_options_selected">已选</string>
+    <string name="select_item">选项</string>
+    <string name="delete">删除</string>
+    <string name="add_to_the_playlist">添加到列表</string>
+    <string name="share_local_files">分享本地音频</string>
+    <string name="delete_success">删除成功</string>
+    <string name="added_to_the_playlist">已添加到列表</string>
+    <string name="played_the_next_one">下一首播放</string>
+
+    <string name="delete_dialog_content">确定要删除选中的资源？</string>
+    <string name="delete_dialog_checked">同时删除本地文件</string>
+
+
+    <!--    An Audio Operation-->
+    <string name="audio_info">音频信息</string>
+
+    <!--    audio information-->
+
+    <string name="file_size">文件大小</string>
+    <string name="file_path">文件路径</string>
+    <string name="duration">时长</string>
+    <string name="sample_rate">采样率</string>
+    <string name="bitrate">比特率</string>
+    <string name="file_type">文件类型</string>
+    <string name="album">专辑</string>
+    <string name="channels">通道</string>
+    <string name="save_cover">保存</string>
+    <string name="Extract_cover">您想要提取封面吗？</string>
+
+    <string name="clip_toast">复制到剪贴板</string>
+
+    <string name="share_to">分享到</string>
+    <string name="share_title">正在共享文件</string>
+
+    <!--    scan page-->
+    <string name="scan_audio">扫描音频</string>
+    <string name="start_scan">开始扫描</string>
+    <string name="loading_scan">本地扫描</string>
+    <string name="scan_result">返回并添加到列表</string>
+    <string name="intermediate_scanning">快速扫描</string>
+    <string name="general_scanning">一般扫描</string>
+    <string name="one_click_scan_local">一键扫描本地音频</string>
+    <string name="file_filter">文件过滤</string>
+    <string name="filter_duration">时长 ( s ) </string>
+    <string name="filter_file_size">文件大小 ( Kb ) </string>
+    <string name="reset_scan">重置扫描</string>
+
+    <string name="lrc">LRC</string>
+    <string name="lrc_input">查找歌词</string>
+    <string name="lrc_select">选择歌词</string>
+    <string name="lrc_show_text">歌词内容</string>
+    <string name="lrc_copy">复制</string>
+
+    <string name="multiple_playback">倍速播放</string>
+
+    <!--    setting page-->
+    <string name="setting_theme">主题</string>
+    <string name="setting">设置</string>
+    <string name="setting_timer">定时停止播放</string>
+    <string name="setting_component">小部件</string>
+
+    <!--    setting theme -->
+    <string name="theme_Dynamic_Color">动态颜色（提取于壁纸）</string>
+    <string name="theme_Subject_Color">主题色</string>
+    <string name="theme_Business_Blue">商务稳重</string>
+    <string name="theme_Eco_Green">清新叶绿</string>
+    <string name="theme_Creative_Violet">活力创意</string>
+    <string name="theme_Warm_Amber">温暖优雅</string>
+    <string name="theme_Modern_Teal">简约现代</string>
+
+    <string name="theme_light">白天</string>
+    <string name="theme_dark">黑夜</string>
+    <string name="theme_follow_system">跟随系统</string>
+
+    <string name="timer">定时停止播放</string>
+    <string name="timer_start">启动</string>
+    <string name="timer_pause">暂停</string>
+    <string name="timer_close">关闭</string>
+
+
+    <string name="parse_file">解析音频文件</string>
+    <string name="parse_success">解析成功</string>
+
+
+<!--tab-->
+    <string name="tab_0">曲</string>
+    <string name="tab_1">词</string>
+
+<!--  effect presets   audio effect -->
+    <string name="audio_effect_title">音效</string>
+    <string name="audio_effect_selected">选择</string>
+
+
+</resources>
