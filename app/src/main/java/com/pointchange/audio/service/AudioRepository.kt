@@ -27,11 +27,13 @@ import com.pointchange.audio.view.widget.AudioInfoWidget
 import com.pointchange.audio.view.widget.AudioWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -41,6 +43,7 @@ import okio.source
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 
+@OptIn(FlowPreview::class)
 class AudioRepository(context: Context) {
     private val dao = AudioDatabase.getDatabase(context).audioMetadataDao()
     private val memoryCache = mutableMapOf<String, AudioMetadata>()
@@ -86,7 +89,7 @@ class AudioRepository(context: Context) {
             }
         }
         scope.launch {
-            currentPlayListState.collect { playListState ->
+            currentPlayListState.debounce(300).collect { playListState ->
                 getPlayList(playListState = playListState)
             }
         }

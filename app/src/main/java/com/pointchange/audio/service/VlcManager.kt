@@ -61,6 +61,9 @@ object VlcManager {
 
             MediaPlayer.Event.Playing -> {
                 _isPlaying.value = true
+                if (mediaPlayer?.volume != 100) {
+                    mediaPlayer?.volume = 100
+                }
             }
 
             MediaPlayer.Event.Paused -> {
@@ -97,7 +100,6 @@ object VlcManager {
             mediaPlayer?.setEventListener(listener)
             vlcEqualizer = MediaPlayer.Equalizer.create()
             mediaPlayer?.setEqualizer(vlcEqualizer)
-            mediaPlayer?.volume = 100
         }
     }
 
@@ -303,4 +305,10 @@ object VlcManager {
     }
 
     fun getIsPlaying() = _isPlaying.value
+
+    fun setVolume(volume: Int) {
+        mediaPlayer?.volume = volume
+    }
+
+    fun getVolume() = mediaPlayer?.volume
 }

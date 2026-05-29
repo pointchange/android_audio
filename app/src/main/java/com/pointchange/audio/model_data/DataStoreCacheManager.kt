@@ -18,6 +18,7 @@ object DataStoreCacheManager {
     private val FIRST_PAGE_KEY = stringPreferencesKey("key_first_page_json")
     private val PLAY_FINO_KEY = stringPreferencesKey("key_play_info_json")
     private val THEME_CONFIG_KEY = stringPreferencesKey("key_theme_config_json")
+    val VOLUME_KEY = stringPreferencesKey("key_volume_json")
     private val jsonConfig = Json {
         ignoreUnknownKeys = true
         encodeDefaults = true
@@ -100,5 +101,21 @@ object DataStoreCacheManager {
                 ThemeConfig()
             }
         }
+    suspend fun saveOtherConfig(context: Context, key: Preferences.Key<String>,value:Any ) {
+        try {
+            context.dataStore.edit { prefs -> prefs[key] = value.toString() }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+    fun<T> getOtherConfig(context: Context,key: Preferences.Key<String>,defaultValue: T) = context.dataStore.data
+        .map {
+            try {
+                val item = it[key] ?: return@map defaultValue
 
+                return@map item.toInt()
+            } catch (e: Exception) {
+                defaultValue
+            }
+        }
 }

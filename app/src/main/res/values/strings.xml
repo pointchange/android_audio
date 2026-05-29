@@ -90,6 +90,7 @@
     <string name="delete_success">Successful Delete</string>
     <string name="added_to_the_playlist">Added to the playlist</string>
     <string name="played_the_next_one">Played the next one</string>
+    <string name="parse_again">Parse again</string>
 
     <string name="delete_dialog_content">Make sure to delete the selected resources ?</string>
     <string name="delete_dialog_checked">Delete local files at the same time</string>
@@ -164,6 +165,8 @@
 
     <string name="parse_file">Parse the file</string>
     <string name="parse_success">Parse success</string>
+    <string name="set_volume">Software volume adjustment</string>
+    <string name="reset">Reset</string>
 
 
 <!--tab-->

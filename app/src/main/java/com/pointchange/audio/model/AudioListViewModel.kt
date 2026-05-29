@@ -31,6 +31,8 @@ import com.pointchange.audio.util.changeColorDeepOrLight
 import com.pointchange.audio.util.getAudioFromContentResolver
 import com.pointchange.audio.util.getAudioFromFile
 import com.pointchange.audio.util.getAudioLrcFromContentResolver
+import com.pointchange.audio.util.getDuration
+import com.pointchange.audio.util.getFileSize
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -168,10 +170,18 @@ class AudioListViewModel(application: Application) : AndroidViewModel(applicatio
             val lrcList = getAudioLrcFromContentResolver(context).associateBy {
                 it.substringAfterLast("/").substringBeforeLast(".")
             }
-            val audioList = getAudioFromContentResolver(context).map { uri ->
-                val name = uri.substringAfterLast("/").substringBeforeLast(".")
-                AudioMetadata(uri = uri, lrc = lrcList[name])
-            }
+            val sizeLimit = 1024L
+            val durationLimit = 1000L * 60
+            val audioList = getAudioFromContentResolver(context)
+                .filter {
+                    val size = getFileSize(it) / 1024L
+                    val duration = getDuration(it) / 1000L
+                    size > sizeLimit && duration > durationLimit
+                }
+                .map { uri ->
+                    val name = uri.substringAfterLast("/").substringBeforeLast(".")
+                    AudioMetadata(uri = uri, lrc = lrcList[name])
+                }
 
             VlcManager.repository.saveMetadataList(audioList)
             setCurrentPlayListState(PlayList.DEFAULT)
@@ -330,7 +340,7 @@ class AudioListViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    fun refreshList(context: Context) {
+    fun refreshList() {
         viewModelScope.launch {
             isRefreshing = true
             val list =
@@ -339,19 +349,31 @@ class AudioListViewModel(application: Application) : AndroidViewModel(applicatio
 
             val urisSet = uris.toSet()
             val memorySet = VlcManager.repository.getMemoryCache().toSet()
-            (urisSet - memorySet).forEach {
-                VlcManager.repository.requestMetadata(it)
-            }
+
 
             if (uris.isNotEmpty()) {
                 VlcManager.repository.deleteExceptMetadata(uris)
             } else {
                 VlcManager.repository.clearCache()
             }
-
             VlcManager.repository.insertOnlyNews(list)
 
+            val newList = urisSet - memorySet
+            newList.forEach {
+                VlcManager.repository.requestMetadata(it)
+            }
+
+
             isRefreshing = false
+        }
+    }
+
+    fun parseOne(uri: String) {
+        viewModelScope.launch {
+            val file = File(uri)
+            if (file.exists()) {
+                VlcManager.repository.requestMetadata(uri)
+            }
         }
     }
 }

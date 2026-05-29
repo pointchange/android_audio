@@ -16,10 +16,12 @@ import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.datastore.preferences.core.edit
 import com.pointchange.audio.MainActivity
 import com.pointchange.audio.R
 import com.pointchange.audio.model_data.DataStoreCacheManager
 import com.pointchange.audio.model_data.PlayMode
+import com.pointchange.audio.model_data.dataStore
 import com.pointchange.audio.util.getBitmap
 import com.pointchange.audio.view.widget.EventAction
 import kotlinx.coroutines.CoroutineScope
@@ -210,10 +212,9 @@ class AudioService : Service() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         savePlayInfo(this)
-        VlcManager.destroy()
         stopForeground(STOP_FOREGROUND_REMOVE)
+        super.onDestroy()
     }
 
     fun savePlayInfo(context: Context) {
@@ -229,6 +230,7 @@ class AudioService : Service() {
                     context = context
                 )
             } finally {
+                VlcManager.destroy()
                 scope.cancel()
             }
         }

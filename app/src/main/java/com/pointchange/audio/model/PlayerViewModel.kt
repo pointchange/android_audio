@@ -5,10 +5,12 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.mutableStateListOf
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pointchange.audio.model_data.AudioMetadata
+import com.pointchange.audio.model_data.dataStore
 import com.pointchange.audio.service.VlcManager
 import com.pointchange.audio.util.getAudioLrcFromContentResolver
 import kotlinx.coroutines.Dispatchers
@@ -55,6 +57,15 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     fun seekTo(newCurrent: Float) {
         val current = newCurrent.toLong()
         VlcManager.seekTo(current)
+    }
+
+    fun getVolume(): Int {
+        val volume = VlcManager.getVolume()
+        return volume ?: 100
+    }
+
+    fun setVolume(volume: Int) {
+        VlcManager.setVolume(volume)
     }
 
 }

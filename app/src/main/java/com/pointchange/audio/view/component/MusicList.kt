@@ -3,6 +3,7 @@ package com.pointchange.audio.view.component
 import android.content.ClipData
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
@@ -85,7 +86,7 @@ fun MusicList(
 
     val isRefreshing = viewModel.isRefreshing
     val onRefresh = {
-        viewModel.refreshList(context = context)
+        viewModel.refreshList()
     }
 
     PullToRefreshBox(
@@ -135,6 +136,7 @@ fun MusicList(
                                 viewModel.playHandle(item.uri)
                                 viewModel.setCurrentPlayListState(state = playList)
                                 viewModel.setPlayingInfo(state = playList, index = index)
+
                             }
                         )
                     }
@@ -221,6 +223,10 @@ fun MusicList(
 
                             DELETE -> {
                                 showDeleteDialog = true
+                            }
+
+                            PARSE_AGAIN -> {
+                                viewModel.parseOne(audioItem.uri)
                             }
                         }
                     })

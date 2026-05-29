@@ -3,7 +3,9 @@ package com.pointchange.audio
 import android.app.Application
 import android.os.StrictMode
 import android.util.Log
+import androidx.datastore.preferences.core.stringPreferencesKey
 import com.pointchange.audio.model_data.DataStoreCacheManager
+import com.pointchange.audio.model_data.dataStore
 import com.pointchange.audio.service.ThemeManager
 import com.pointchange.audio.service.VlcManager
 import kotlinx.coroutines.CoroutineScope
@@ -26,7 +28,7 @@ class App : Application() {
                 VlcManager.tempList = list
             }
 
-            val playInfo=DataStoreCacheManager.getPlayInfo(applicationContext).first()
+            val playInfo = DataStoreCacheManager.getPlayInfo(applicationContext).first()
             VlcManager.repository.readPlayInfo(playInfo)
             val config = DataStoreCacheManager.getThemeConfig(applicationContext).first()
 

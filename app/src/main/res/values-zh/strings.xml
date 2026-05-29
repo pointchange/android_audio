@@ -90,6 +90,7 @@
     <string name="delete_success">删除成功</string>
     <string name="added_to_the_playlist">已添加到列表</string>
     <string name="played_the_next_one">下一首播放</string>
+    <string name="parse_again">再次解析</string>
 
     <string name="delete_dialog_content">确定要删除选中的资源？</string>
     <string name="delete_dialog_checked">同时删除本地文件</string>
@@ -164,6 +165,9 @@
 
     <string name="parse_file">解析音频文件</string>
     <string name="parse_success">解析成功</string>
+    <string name="set_volume">软件增强音频音量</string>
+    <string name="reset">重置</string>
+
 
 
 <!--tab-->

@@ -12,5 +12,6 @@ enum class AnAudioOperation(@param:DrawableRes val icon: Int, @param:StringRes v
     ADD_FAVORITE(icon = R.drawable.round_favorite_24, text = R.string.favorite),
     AUDIO_INFO(icon = R.drawable.outline_info_24, text = R.string.audio_info),
     DELETE(icon = R.drawable.round_delete_outline_24,text=R.string.delete),
+    PARSE_AGAIN(icon = R.drawable.round_sync_24,text=R.string.parse_again),
     SHARE_LOCAL_FILES(icon = R.drawable.round_share_24, text = R.string.share_local_files)
 }

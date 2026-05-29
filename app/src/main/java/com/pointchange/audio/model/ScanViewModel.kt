@@ -9,6 +9,8 @@ import com.pointchange.audio.model_data.AudioMetadata
 import com.pointchange.audio.service.VlcManager
 import com.pointchange.audio.util.getAudioFromContentResolver
 import com.pointchange.audio.util.getAudioFromFile
+import com.pointchange.audio.util.getDuration
+import com.pointchange.audio.util.getFileSize
 import com.pointchange.audio.view.page.ScanDegree
 import com.pointchange.audio.view.page.ScanDegree.GENERAL
 import com.pointchange.audio.view.page.ScanDegree.MEDIUM
@@ -88,12 +90,6 @@ class ScanViewModel : ViewModel() {
         _minFileSize.value = minFileSize
     }
 
-
-    private suspend fun getDuration(path: String) = VlcManager.getDuration(path)
-
-    private fun getFileSize(path: String) = File(path).length()
-
-
     fun mediumScan(context: Context) {
         viewModelScope.launch {
             _scanState.emit(ScanState.LOADING)
@@ -111,9 +107,20 @@ class ScanViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val list = _fileList.value.toMutableList()
             list.removeAll(notSelectList)
+            val cache = VlcManager.repository.getMemoryCache()
+
+            val urisSet = list.toSet()
+            val memorySet = cache.toSet()
+            val newList = urisSet - memorySet
+
             val audioMetadataList =
-                list.map { AudioMetadata(uri = it, artist = null, album = null, title = null) }
+                newList.map { AudioMetadata(uri = it) }
             VlcManager.repository.insertOnlyNews(list = audioMetadataList)
+
+            newList.forEach {
+                VlcManager.repository.requestMetadata(it)
+            }
+
         }
     }
 
