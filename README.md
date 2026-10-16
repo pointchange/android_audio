@@ -4,6 +4,8 @@
 
 ## 下载安装
 
+[sample-audio-1.0.0](https://github.com/pointchange/android_audio/releases/download/sample-audio-1.0.0/sample-audio-1.0.0.apk)
+
 ## 功能特性
 
 - **基本功能**: 音频播放与搜索、列表、队列、详情、扫描文件、定时器、黑白主题
